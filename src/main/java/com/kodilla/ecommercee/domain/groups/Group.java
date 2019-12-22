@@ -13,19 +13,19 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "group")
+@Table(name = "GROUP")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "group_id", unique = true, nullable = false)
+    @Column(name = "GROUP_ID", unique = true, nullable = false)
     private Long groupId;
 
-    @Column(name = "group_name")
+    @Column(name = "GROUP_NAME")
     private String groupName;
 
     @OneToMany(
             targetEntity = ProductEntity.class,
-            mappedBy = "group",
+            mappedBy = "GROUP",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
