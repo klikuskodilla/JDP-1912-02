@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @NoArgsConstructor
-@Getter
 @Entity
 @Table(name = "USERS")
 public class UserEntity {
@@ -17,29 +16,36 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "ID", unique = true)
+    @Getter
     private Long id;
 
     @NotNull
     @Column(name = "FIRST_NAME")
+    @Getter
     private String name;
 
     @NotNull
     @Column(name = "LAST_NAME")
+    @Getter
     private String surname;
 
     @NotNull
     @Column(name = "LOGIN", unique = true)
+    @Getter
     private String login;
 
     @NotNull
     @Column(name = "MAIL", unique = true)
+    @Getter
     private String mail;
 
     @NotNull
     @Column(name = "PASSWORD")
+    @Getter
     private String password;
 
     @Column(name = "SESSION_KEY")
+    @Getter
     private Integer sessionKey;
 
 
