@@ -11,7 +11,6 @@ import java.util.Date;
 
 
 @NoArgsConstructor
-@Getter
 @Entity
 @Table(name = "ORDERS")
 public class OrderEntity {
@@ -20,18 +19,22 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "ID", unique = true)
+    @Getter
     private Long id;
 
     @NotNull
     @Column(name = "ADRESS")
+    @Getter
     private String adress;
 
     @NotNull
     @Column(name = "PAYMENT_STATUS")
+    @Getter
     private Boolean isPaid;
 
     @NotNull
     @Column(name = "DATE_CREATED")
+    @Getter
     private Date created;
 
     private UserEntity user;
