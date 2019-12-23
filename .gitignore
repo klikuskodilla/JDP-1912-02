@@ -23,4 +23,6 @@
 /nbbuild/
 /dist/
 /nbdist/
-/.nb-gradle/
+/.nb-gradle/build.gradle
+gradle\
+specs\
