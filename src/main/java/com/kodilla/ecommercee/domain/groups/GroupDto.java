@@ -11,8 +11,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+
 public class GroupDto {
     private Long groupId;
     private String groupName;
-   // private List<ProductDto> productsGroup = new ArrayList<>();
+
+    // private List<ProductDto> productsGroup = new ArrayList<>();
 }
