@@ -1,10 +1,6 @@
 package com.kodilla.ecommercee.domain.groups;
 
-<<<<<<< HEAD
 import com.kodilla.ecommercee.domain.Product.ProductDto;
-=======
-import com.kodilla.ecommercee.domain.products.ProductDto;
->>>>>>> origin/JDP191202-13
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
