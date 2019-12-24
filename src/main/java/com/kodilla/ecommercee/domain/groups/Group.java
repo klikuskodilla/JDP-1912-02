@@ -1,6 +1,6 @@
 package com.kodilla.ecommercee.domain.groups;
 
-import com.kodilla.ecommercee.domain.products.ProductEntity;
+import com.kodilla.ecommercee.domain.Product.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,14 +24,14 @@ public class Group {
     private String groupName;
 
     @OneToMany(
-            targetEntity = ProductEntity.class,
+            targetEntity = Product.class,
             mappedBy = "GROUP",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    private List<ProductEntity> productsGroup = new ArrayList<>();
+    private List<Product> productsGroup = new ArrayList<>();
 
-    public Group(String groupName, List<ProductEntity> productsGroup) {
+    public Group(String groupName, List<Product> productsGroup) {
         this.groupName = groupName;
         this.productsGroup = productsGroup;
     }
