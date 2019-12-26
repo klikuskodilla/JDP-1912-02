@@ -30,7 +30,7 @@ public class Product{
     @Column(name = "PRICE")
     private BigDecimal price;
 
-    @ManyToOne
+ /*   @ManyToOne
     @JoinColumn(name="GROUP_ID")
     @Column(name = "GROUP")
     private Group group;
@@ -42,6 +42,6 @@ public class Product{
             inverseJoinColumns = {@JoinColumn (name = "CART_ID", referencedColumnName = "CART_ID")}
             )
     List<CartEntity> carts;
-
+*/
 
 }
