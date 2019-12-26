@@ -14,6 +14,6 @@ public class ProductDto {
     private Long id;
     private String description;
     private BigDecimal price;
-    private Group group;
-    List<CartEntity> carts;
+  /*  private Group group;
+    List<CartEntity> carts;*/
 }
