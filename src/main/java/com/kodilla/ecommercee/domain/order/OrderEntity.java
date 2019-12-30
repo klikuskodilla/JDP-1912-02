@@ -10,41 +10,68 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 
-@NoArgsConstructor
+
 @Entity
 @Table(name = "ORDERS")
 public class OrderEntity {
+
+    private Long id;
+    private String adress;
+    private Boolean isPaid;
+    private Date created;
+    //private UserEntity user;
+    //private CartEntity cart;
+
+
+    public OrderEntity() {
+    }
+
+    public OrderEntity(String adress, Boolean isPaid) {
+        this.adress = adress;
+        this.isPaid = isPaid;
+        this.created = new Date();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "ID", unique = true)
-    @Getter
-    private Long id;
+    public Long getId() {
+        return id;
+    }
 
     @NotNull
     @Column(name = "ADRESS")
-    @Getter
-    private String adress;
+    public String getAdress() {
+        return adress;
+    }
 
     @NotNull
     @Column(name = "PAYMENT_STATUS")
-    @Getter
-    private Boolean isPaid;
+    public Boolean getPaid() {
+        return isPaid;
+    }
 
     @NotNull
     @Column(name = "DATE_CREATED")
-    @Getter
-    private Date created;
+    public Date getCreated() {
+        return created;
+    }
 
-    //private UserEntity user;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    //private CartEntity cart;
-
-    public OrderEntity(@NotNull String adress, @NotNull Boolean isPaid) {
+    public void setAdress(String adress) {
         this.adress = adress;
-        this.isPaid = isPaid;
-        this.created = new Date();
+    }
+
+    public void setPaid(Boolean paid) {
+        isPaid = paid;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
     //@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -67,7 +94,4 @@ public class OrderEntity {
         //this.user = user;
     //}
 
-    public void setPaid(Boolean paid) {
-        isPaid = paid;
-    }
 }
