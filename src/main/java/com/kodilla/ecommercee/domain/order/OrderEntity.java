@@ -37,9 +37,9 @@ public class OrderEntity {
     @Getter
     private Date created;
 
-    private UserEntity user;
+    //private UserEntity user;
 
-    private CartEntity cart;
+    //private CartEntity cart;
 
     public OrderEntity(@NotNull String adress, @NotNull Boolean isPaid) {
         this.adress = adress;
@@ -47,25 +47,25 @@ public class OrderEntity {
         this.created = new Date();
     }
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "CART_ID")
-    public CartEntity getCart() {
-        return cart;
-    }
+    //@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    //@JoinColumn(name = "CART_ID")
+    //public CartEntity getCart() {
+        //return cart;
+    //}
 
-    public void setCart(CartEntity cart) {
-        this.cart = cart;
-    }
+   // public void setCart(CartEntity cart) {
+        //this.cart = cart;
+    //}
 
-    @ManyToOne
-    @JoinColumn(name = "USER_ID")
-    public UserEntity getUser() {
-        return user;
-    }
+    //@ManyToOne
+    //@JoinColumn(name = "USER_ID")
+    //public UserEntity getUser() {
+        //return user;
+    //}
 
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
+    //public void setUser(UserEntity user) {
+        //this.user = user;
+    //}
 
     public void setPaid(Boolean paid) {
         isPaid = paid;
