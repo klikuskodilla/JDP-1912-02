@@ -1,8 +1,12 @@
 package com.kodilla.ecommercee.domain.Product;
 
+import com.kodilla.ecommercee.domain.cart.CartEntity;
+import com.kodilla.ecommercee.domain.groups.Group;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "PRODUCT")
@@ -11,16 +15,16 @@ public class Product{
     private Long id;
     private String description;
     private BigDecimal price;
-   // private Group group;
-   // private List<CartEntity> carts;
+    private Group group;
+    private List<CartEntity> carts;
 
     public Product() {
     }
 
-    public Product(String description, BigDecimal price/*, Group group*/) {
+    public Product(String description, BigDecimal price, Group group) {
         this.description = description;
         this.price = price;
-       // this.group = group;
+        this.group = group;
     }
 
 
@@ -55,9 +59,8 @@ public class Product{
         this.price = price;
     }
 
- /*   @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "GROUP_ID")
-    @Column(name = "GROUP")
     public Group getGroup() {
         return group;
     }
@@ -75,5 +78,5 @@ public class Product{
         this.carts = carts;
     }
 
-  */
+
 }

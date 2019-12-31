@@ -1,5 +1,7 @@
 package com.kodilla.ecommercee.domain.user;
 
+import com.kodilla.ecommercee.domain.cart.CartEntity;
+import com.kodilla.ecommercee.domain.order.OrderEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +20,7 @@ public class UserEntityDto {
     private String mail;
     private String password;
     private Integer sessionKey;
-    //private CartEntity cart;
-    //private List<OrderEntity> orders;
+    private CartEntity cart;
+    private List<OrderEntity> orders;
 
 }

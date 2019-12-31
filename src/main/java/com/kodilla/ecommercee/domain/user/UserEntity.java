@@ -1,5 +1,7 @@
 package com.kodilla.ecommercee.domain.user;
 
+import com.kodilla.ecommercee.domain.cart.CartEntity;
+import com.kodilla.ecommercee.domain.order.OrderEntity;
 import com.kodilla.ecommercee.domain.user.dao.UserEntityDao;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,9 +24,8 @@ public class UserEntity {
     private String mail;
     private String password;
     private Integer sessionKey;
-    //private CartEntity cart;
-    // private List<OrderEntity> orders;
-
+    private CartEntity cart;
+    private List<OrderEntity> orders;
 
     public UserEntity() {
     }
@@ -108,28 +109,28 @@ public class UserEntity {
         this.sessionKey = sessionKey;
     }
 
-    //@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    //@JoinColumn(name = "USER_CART_ID")
-    //public CartEntity getCart() {
-    //    return cart;
-    //}
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "USER_CART_ID")
+    public CartEntity getCart() {
+        return cart;
+    }
 
-    //public void setCart(CartEntity cart) {
-    //    this.cart = cart;
-    //}
+    public void setCart(CartEntity cart) {
+        this.cart = cart;
+    }
 
-    //@OneToMany(
-    //        targetEntity = OrderEntity.class,
-    //        mappedBy = user,
-    //        cascade = CascadeType.REFRESH,
-    //        fetch = FetchType.EAGER
-    //)
-    //public List<OrderEntity> getOrders() {
-    //    return orders;
-    //}
+    @OneToMany(
+            targetEntity = OrderEntity.class,
+            mappedBy = "user",
+            cascade = CascadeType.REFRESH,
+            fetch = FetchType.EAGER
+    )
+    public List<OrderEntity> getOrders() {
+        return orders;
+    }
 
-    //public void setOrders(List<OrderEntity> orders) {
-    //    this.orders = orders;
-    //}
+    public void setOrders(List<OrderEntity> orders) {
+        this.orders = orders;
+    }
 
 }

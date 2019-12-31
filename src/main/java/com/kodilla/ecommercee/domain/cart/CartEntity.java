@@ -1,5 +1,8 @@
 package com.kodilla.ecommercee.domain.cart;
 
+import com.kodilla.ecommercee.domain.Product.Product;
+import com.kodilla.ecommercee.domain.user.UserEntity;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -9,8 +12,8 @@ import java.util.List;
 public class CartEntity {
     private Long id;
     private BigDecimal cost;
-/*    private List<ProductEntity> products;
-    private UserEntity user;*/
+    private List<Product> products;
+    private UserEntity user;
 
     public CartEntity() {
     }
@@ -18,7 +21,7 @@ public class CartEntity {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "CARTS_ID", unique = true)
+    @Column(name = "CART_ID", unique = true)
     public Long getId() {
         return id;
     }
@@ -27,7 +30,7 @@ public class CartEntity {
         this.id = id;
     }
 
-    @Column(name = "CARDS_PRICE")
+    @Column(name = "CART_PRICE")
     public BigDecimal getCost() {
         return cost;
     }
@@ -36,17 +39,17 @@ public class CartEntity {
         this.cost = cost;
     }
 
-/*    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "CARDS_PRODUCTS",
-            joinColumns = @JoinColumn(name = "CARDS_ID", referencedColumnName = "CARTS_ID"),
+            name = "CARTS_PRODUCTS",
+            joinColumns = @JoinColumn(name = "CART_ID", referencedColumnName = "CART_ID"),
             inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
     )
-    public List<ProductEntity> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<ProductEntity> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 
@@ -57,5 +60,5 @@ public class CartEntity {
 
     public void setUser(UserEntity user) {
         this.user = user;
-    }*/
+    }
 }
