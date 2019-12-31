@@ -13,8 +13,7 @@ import java.util.List;
 public class CartDto {
     private Long id;
     private BigDecimal cost;
-    private List<ProductEntity> products;
-    private UserEntity user;
-    private OrderEntity order;
+/*    private List<ProductEntity> products;
+    private UserEntity user;*/
 
 }

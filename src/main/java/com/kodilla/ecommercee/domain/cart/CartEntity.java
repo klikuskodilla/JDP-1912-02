@@ -9,13 +9,8 @@ import java.util.List;
 public class CartEntity {
     private Long id;
     private BigDecimal cost;
-    private List<ProductEntity> products;
-    private UserEntity user;
-    private OrderEntity order;
-
-    public CartEntity(UserEntity user) {
-        this.user = user;git status
-    }
+/*    private List<ProductEntity> products;
+    private UserEntity user;*/
 
     public CartEntity() {
     }
@@ -41,7 +36,7 @@ public class CartEntity {
         this.cost = cost;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+/*    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "CARDS_PRODUCTS",
             joinColumns = @JoinColumn(name = "CARDS_ID", referencedColumnName = "CARTS_ID"),
@@ -62,15 +57,5 @@ public class CartEntity {
 
     public void setUser(UserEntity user) {
         this.user = user;
-    }
-
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "ORDERS_ID", referencedColumnName = "ORDERS_ID")
-    public OrderEntity getOrder() {
-        return order;
-    }
-
-    public void setOrder(OrderEntity order) {
-        this.order = order;
-    }
+    }*/
 }
