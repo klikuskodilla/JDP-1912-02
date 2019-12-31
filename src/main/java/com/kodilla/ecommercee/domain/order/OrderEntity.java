@@ -26,9 +26,9 @@ public class OrderEntity {
     public OrderEntity() {
     }
 
-    public OrderEntity(String adress, Boolean isPaid) {
+    public OrderEntity(String adress) {
         this.adress = adress;
-        this.isPaid = isPaid;
+        this.isPaid = false;
         this.created = new Date();
     }
 
