@@ -19,7 +19,7 @@ public class OrderDaoTestSuite {
     @Autowired
     private OrderDao orderDao;
     private static final String ADRESS = "Test adress 1";
-    private static final Boolean PAYMENT_STATUS = false;
+    //private static final Boolean PAYMENT_STATUS = false;
 
 
     @Test
@@ -31,7 +31,7 @@ public class OrderDaoTestSuite {
     public void testOrderDaoSave(){
 
         //Given
-        OrderEntity order = new OrderEntity(ADRESS, PAYMENT_STATUS);
+        OrderEntity order = new OrderEntity(ADRESS);
         order.setCreated(new Date());
 
         //When
