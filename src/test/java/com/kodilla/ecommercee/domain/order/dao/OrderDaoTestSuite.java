@@ -44,7 +44,7 @@ public class OrderDaoTestSuite {
         System.out.println(readOrder.get().getId() + " | " + readOrder.get().getAdress() + " | " + readOrder.get().getPaid() + " | " + readOrder.get().getCreated());
 
         //CleanUp
-        //orderDao.deleteById(id);
+        orderDao.deleteById(id);
     }
 
 
