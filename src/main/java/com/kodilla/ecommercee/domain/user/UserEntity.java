@@ -10,6 +10,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,7 +26,7 @@ public class UserEntity {
     private String password;
     private Integer sessionKey;
     private CartEntity cart;
-    private List<OrderEntity> orders;
+    private List<OrderEntity> orders = new ArrayList<>();
 
     public UserEntity() {
     }
@@ -122,7 +123,7 @@ public class UserEntity {
     @OneToMany(
             targetEntity = OrderEntity.class,
             mappedBy = "user",
-            cascade = CascadeType.REFRESH,
+            cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
     )
     public List<OrderEntity> getOrders() {
