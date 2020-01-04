@@ -43,14 +43,14 @@ public class UserDaoTestSuite {
     @Test
     public void testUserDaoSave(){
         //Given
-        UserEntity user = new UserEntity(NAME, SURNAME, LOGIN, MAIL, PASSWORD);
-        user.setSessionKey(SESSION_KEY);
+        UserEntity user1 = new UserEntity(NAME, SURNAME, LOGIN, MAIL, PASSWORD);
+        user1.setSessionKey(SESSION_KEY);
 
         //When
-        userDao.save(user);
+        userDao.save(user1);
 
         //Then
-        Long id = user.getId();
+        Long id = user1.getId();
         Optional<UserEntity> readUser = userDao.findById(id);
         Assert.assertTrue(readUser.isPresent());
         System.out.println(readUser.get().getId() + " | " + readUser.get().getName() + " |" + readUser.get().getSurname());
@@ -66,7 +66,7 @@ public class UserDaoTestSuite {
         //userDao.deleteAll();
 
         //Given
-        UserEntity user = new UserEntity(NAME, SURNAME, LOGIN, MAIL, PASSWORD);
+        UserEntity user = new UserEntity(NAME, SURNAME, "Test Login 2", "mail2@test.com", PASSWORD);
         user.setSessionKey(SESSION_KEY);
         CartEntity cart = new CartEntity();
         cart.setCost(new BigDecimal(30.99));
@@ -94,7 +94,7 @@ public class UserDaoTestSuite {
         Assert.assertEquals(readOrder1Adress, "Adress 1");
         Assert.assertEquals(readOrder2Adress, "Adress 2");
         Assert.assertEquals(BigDecimal.valueOf(30.99), readCart);
-        Assert.assertEquals(readCartUser, "Test_Login");
+        Assert.assertEquals(readCartUser, "Test Login 2");
         System.out.println(
                 readUser.get().getId() + " | " + readUser.get().getName()
                         + " |" + readUser.get().getSurname()
