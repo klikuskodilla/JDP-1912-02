@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 @Transactional
 public interface GroupDao extends CrudRepository<Group, Long> {
-/*
+
     @Override
     List<Group> findAll();
 
@@ -27,5 +27,5 @@ public interface GroupDao extends CrudRepository<Group, Long> {
     @Override
     long count();
 
- */
+
 }

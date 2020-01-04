@@ -21,10 +21,10 @@ public class Product{
     public Product() {
     }
 
-    public Product(String description, BigDecimal price, Group group) {
+    public Product(String description, BigDecimal price) {
         this.description = description;
         this.price = price;
-        this.group = group;
+       // this.group = group;
     }
 
 
