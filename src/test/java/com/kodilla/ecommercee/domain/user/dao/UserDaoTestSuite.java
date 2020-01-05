@@ -75,16 +75,17 @@ public class UserDaoTestSuite {
 
         //Then
         Assert.assertTrue(readUser.isPresent());
+        Assert.assertEquals(readUser.get().getId(), (Long) 1L);
         Assert.assertEquals(readOrder1Adress, "Adress 1");
         Assert.assertEquals(readOrder2Adress, "Adress 2");
         Assert.assertEquals(BigDecimal.valueOf(30.99), readCart);
         Assert.assertEquals(readCartUser, "Test Login 2");
-        Assert.assertEquals(readUser.get().getId().longValue(), 1L);
+        Assert.assertEquals(readUser.get().getId(), (Long) 1L);
         Assert.assertEquals(readUser.get().getName(), "John");
         Assert.assertEquals(readUser.get().getSurname(), "Rambo");
-        Assert.assertEquals(readUser.get().getOrders().get(0).getUser().getId().longValue(), 1L);
-        Assert.assertEquals(readUser.get().getOrders().get(1).getUser().getId().longValue(), 1L);
-        Assert.assertEquals(readUser.get().getCart().getUser().getId().longValue(), 1L);
+        Assert.assertEquals(readUser.get().getOrders().get(0).getUser().getId(), (Long) 1L);
+        Assert.assertEquals(readUser.get().getOrders().get(1).getUser().getId(), (Long) 1L);
+        Assert.assertEquals(readUser.get().getCart().getUser().getId(), (Long) 1L);
 
 
 
