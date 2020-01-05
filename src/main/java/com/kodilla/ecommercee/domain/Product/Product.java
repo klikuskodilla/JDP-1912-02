@@ -6,6 +6,7 @@ import com.kodilla.ecommercee.domain.groups.Group;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,10 +22,10 @@ public class Product{
     public Product() {
     }
 
-    public Product(String description, BigDecimal price, Group group) {
+    public Product(String description, BigDecimal price) {
         this.description = description;
         this.price = price;
-        this.group = group;
+        this.carts = new ArrayList<>();
     }
 
 
