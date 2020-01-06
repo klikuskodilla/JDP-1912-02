@@ -27,5 +27,4 @@ public interface GroupDao extends CrudRepository<Group, Long> {
     @Override
     long count();
 
-
 }

@@ -5,6 +5,7 @@ import com.kodilla.ecommercee.domain.Product.dao.ProductDao;
 import com.kodilla.ecommercee.domain.groups.Group;
 import com.kodilla.ecommercee.domain.groups.dao.GroupDao;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,58 +16,72 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class GroupDaoTestSuite {
+    private Group group1;
+    private Group group2;
+    private Product product1;
+    private Product product2;
 
     @Autowired
     private GroupDao groupDao;
+    @Autowired
+    private ProductDao productDao;
+
+    @Before
+    public void sampleData(){
+        product1 = new Product("RED",new BigDecimal(2.22));
+        product2 = new Product("CAT", new BigDecimal(1.22));
+
+        group1 = new Group("Group Of Colors");
+        group2 = new Group("Group Of Animals");
+    }
+
 
     @Test
-    public void testSaveEntityRelactions (){
+    public void testCreateGroup(){
 
-        Product prod1 = new Product("obraz olejny",new BigDecimal(2.22));
-        Product prod2 = new Product("kolorowa plama", new BigDecimal(1.22));
+        product1.setGroup(group1);
+        group1.getProductsGroup().add(product1);
+        groupDao.save(group1);
 
-        List<Product> listOf = new ArrayList<>();
-        listOf.add(prod1);
-        listOf.add(prod2);
-        Group groupList = new Group(1L,"Sztuka",listOf);
+        product2.setGroup(group2);
+        group2.getProductsGroup().add(product2);
+        groupDao.save(group2);
 
-        Product product3 = new Product("angry cat",new BigDecimal(3.33));
-        Product product4 = new Product("blind dog", new BigDecimal(5.43));
+        Long groupId = groupDao.save(group1).getGroupId();
 
-        List<Product> nextList = new ArrayList<>();
-        nextList.add(product3);
-        nextList.add(product4);
-        Group groupList_2= new Group(2L,"Pets",nextList);
-
-
-        groupList_2.getGroupList().add(product3);
-        groupList_2.getGroupList().add(product4);
-        product3.setGroup(groupList_2);
-        product4.setGroup(groupList_2);
-        groupDao.save(groupList_2);
-        Long id2 = groupList_2.getGroup_id();
-
-        groupList.getGroupList().add(prod1);
-        groupList.getGroupList().add(prod2);
-
-        prod1.setGroup(groupList);
-        prod2.setGroup(groupList);
-
-        groupDao.save(groupList);
-         Long id = groupList.getGroup_id();
-         String s = groupList.getGroupName();
-
-        Assert.assertNotEquals(java.util.Optional.of(0), id);
-        Assert.assertEquals(s,groupList.getGroupName());
+        Optional<Group> isReal = groupDao.findById(groupId);
+        assertTrue(isReal.isPresent());
+        assertEquals("Group Of Colors",isReal.get().getGroupName());
+        assertTrue(productDao.findAll().stream().anyMatch(oneProduct -> oneProduct.getId().equals(product1.getId())));
 
         //CleanUp
-        groupDao.deleteById(id);
-        groupDao.deleteById(id2);
-        groupDao.delete(groupList);
-        groupDao.delete(groupList_2);
+        groupDao.deleteAll();
+    }
+
+    @Test
+    public void findGroups(){
+        product1.setGroup(group1);
+        group1.getProductsGroup().add(product1);
+        groupDao.save(group1);
+
+        product2.setGroup(group2);
+        group2.getProductsGroup().add(product2);
+        groupDao.save(group2);
+
+        List<Group> isFind = groupDao.findAll();
+
+        assertEquals(2, isFind.size());
+
+        //CleanUp
+        groupDao.deleteAll();
+
     }
 }
