@@ -43,7 +43,8 @@ public class CartEntity {
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.MERGE,
+            CascadeType.REFRESH
     })
     @JoinTable(
             name = "CARTS_PRODUCTS",

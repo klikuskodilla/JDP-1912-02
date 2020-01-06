@@ -41,14 +41,14 @@ public class CartDaoTestSuite {
         user.setSessionKey(SESSION_KEY);
 
         //When
+        user.setCart(cart);
         userDao.save(user);
-        cart.setUser(user);
-        cartEntityDao.save(cart);
 
         //Then
         Long id = cart.getId();
         Optional<CartEntity> readCart = cartEntityDao.findById(id);
         Assert.assertTrue(readCart.isPresent());
+        Assert.assertNotEquals(Optional.of(0), readCart.get().getUser().getId());
 
         //Clean up
         try {
