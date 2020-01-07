@@ -59,7 +59,10 @@ public class Product{
         this.price = price;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE,
+            CascadeType.REFRESH})
     @JoinColumn(name = "GROUP_ID")
     public Group getGroup() {
         return group;
@@ -73,7 +76,7 @@ public class Product{
             CascadeType.PERSIST,
             CascadeType.MERGE,
             CascadeType.REFRESH
-             },
+             }, fetch = FetchType.EAGER,
             mappedBy = "products")
     public List<CartEntity> getCarts() {
         return carts;
