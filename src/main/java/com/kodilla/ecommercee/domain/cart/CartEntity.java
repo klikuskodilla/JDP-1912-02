@@ -6,6 +6,7 @@ import com.kodilla.ecommercee.domain.user.UserEntity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "CARTS")
@@ -16,6 +17,7 @@ public class CartEntity {
     private UserEntity user;
 
     public CartEntity() {
+        this.products = new ArrayList<>();
     }
 
     @Id
@@ -39,7 +41,11 @@ public class CartEntity {
         this.cost = cost;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE,
+            CascadeType.REFRESH
+    })
     @JoinTable(
             name = "CARTS_PRODUCTS",
             joinColumns = @JoinColumn(name = "CART_ID", referencedColumnName = "CART_ID"),

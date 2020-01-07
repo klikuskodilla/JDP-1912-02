@@ -69,7 +69,12 @@ public class Product{
         this.group = group;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE,
+            CascadeType.REFRESH
+             },
+            mappedBy = "products")
     public List<CartEntity> getCarts() {
         return carts;
     }
