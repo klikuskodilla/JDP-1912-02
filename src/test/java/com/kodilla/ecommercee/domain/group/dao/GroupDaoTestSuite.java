@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -57,7 +58,6 @@ public class GroupDaoTestSuite {
         Optional<Group> isReal = groupDao.findById(groupId);
         assertTrue(isReal.isPresent());
         assertEquals("Group Of Colors",isReal.get().getGroupName());
-        //assertTrue(productDao.findAll().stream().anyMatch(oneProduct -> oneProduct.getId().equals(product1.getId())));
 
         //CleanUp
         groupDao.deleteAll();
@@ -79,5 +79,25 @@ public class GroupDaoTestSuite {
 
         //CleanUp
         groupDao.deleteAll();
+    }
+    @Test
+    public void testFindProductInGroup(){
+        product1.setGroup(group1);
+        group1.getProductsGroup().add(product1);
+        groupDao.save(group1);
+
+        product2.setGroup(group2);
+        group2.getProductsGroup().add(product2);
+        groupDao.save(group2);
+
+        Long groupId = group2.getGroupId();
+        Long productId = product2.getId();
+
+        Optional<Group> isReal = groupDao.findById(groupId);
+        String isProduct = productDao.findById(productId).get().getDescription();
+
+        assertTrue(isReal.isPresent());
+        assertEquals("Group Of Animals",isReal.get().getGroupName());
+        assertEquals(isProduct,productDao.findById(productId).get().getDescription());
     }
 }
