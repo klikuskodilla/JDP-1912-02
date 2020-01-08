@@ -25,6 +25,7 @@ public class UserEntity {
     private String mail;
     private String password;
     private Integer sessionKey;
+    private Boolean loggedIn;
     private CartEntity cart;
     private List<OrderEntity> orders = new ArrayList<>();
 
@@ -37,6 +38,7 @@ public class UserEntity {
         this.login = login;
         this.mail = mail;
         this.password = password;
+        this.loggedIn = false;
     }
 
     @Id
@@ -82,6 +84,11 @@ public class UserEntity {
         return sessionKey;
     }
 
+    @Column(name = "LOGIN_STATUS")
+    public Boolean getLoggedIn() {
+        return loggedIn;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -108,6 +115,10 @@ public class UserEntity {
 
     public void setSessionKey(Integer sessionKey) {
         this.sessionKey = sessionKey;
+    }
+
+    public void setLoggedIn(Boolean loggedIn) {
+        this.loggedIn = loggedIn;
     }
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
