@@ -82,8 +82,8 @@ public class ProductDaoTestSuite {
         Optional<Product> readProduct2 = productDao.findById(testProduct2.getId());
 
         //Then
-        Assert.assertTrue(productDao.findById(testProduct1.getId()).isPresent());
-        Assert.assertTrue(productDao.findById(testProduct2.getId()).isPresent());
+        Assert.assertTrue(readProduct1.isPresent());
+        Assert.assertTrue(readProduct2.isPresent());
 
         Assert.assertEquals("Test Description with other Entities", readProduct1.get().getDescription());
         Assert.assertEquals("Test no. 2 with other Entities", readProduct2.get().getDescription());
