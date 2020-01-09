@@ -14,11 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Setter
-
 public class GroupDto {
     private Long groupId;
     private String groupName;
-
-    private List<ProductDto> productsGroup = new ArrayList<>();
+    private List<ProductDto> products = new ArrayList<>();
 }
