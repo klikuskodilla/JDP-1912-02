@@ -71,9 +71,9 @@ public class CartDaoTestSuite {
         CartEntity cart1 = new CartEntity();
         CartEntity cart2 = new CartEntity();
 
-        Product product1 = new Product("wireless headphones", new BigDecimal(10));
-        Product product2 = new Product("headphones", new BigDecimal(5));
-        Product product3 = new Product("keyboard", new BigDecimal(15));
+        Product product1 = new Product("wireless headphones","description1", new BigDecimal(10));
+        Product product2 = new Product("headphones","description2", new BigDecimal(5));
+        Product product3 = new Product("keyboard","description3", new BigDecimal(15));
 
         cart1.getProducts().add(product1);
         cart1.getProducts().add(product2);

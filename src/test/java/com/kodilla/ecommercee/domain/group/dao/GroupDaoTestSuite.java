@@ -32,10 +32,10 @@ public class GroupDaoTestSuite {
 
     @Before
     public void sampleData(){
-        product1 = new Product("RED",new BigDecimal(2.22));
-        product2 = new Product("CAT", new BigDecimal(1.22));
-        product3 = new Product("BLUE", new BigDecimal(3.22));
-        product4 = new Product("DOG",new BigDecimal(0.43));
+        product1 = new Product("RED","RGB",new BigDecimal(2.22));
+        product2 = new Product("CAT","MASCOT", new BigDecimal(1.22));
+        product3 = new Product("BLUE","RGB", new BigDecimal(3.22));
+        product4 = new Product("DOG","MASCOT",new BigDecimal(0.43));
 
         group1 = new Group("Group Of Colors");
         group2 = new Group("Group Of Animals");
@@ -72,9 +72,13 @@ public class GroupDaoTestSuite {
         assertTrue(findGroupById.isPresent());
         assertEquals(4,productDao.count());
         assertEquals("Group Of Animals",findGroupById.get().getGroupName());
-        assertEquals("BLUE",product3Description);
-        assertEquals("CAT",productDao.findById(productId).get().getDescription());
+        assertEquals("RGB",product3Description);
+        assertEquals("MASCOT",productDao.findById(productId).get().getDescription());
         assertEquals(findGroupById.get().getId(),product2.getGroup().getId());
         assertNotEquals(group1.getId(),product4.getGroup().getId());
+
+        //Clean up
+        groupDao.delete(group1);
+        groupDao.delete(group2);
     }
 }
