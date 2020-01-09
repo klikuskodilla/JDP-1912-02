@@ -2,7 +2,9 @@ package com.kodilla.ecommercee.controller.user;
 
 import com.kodilla.ecommercee.domain.user.UserEntity;
 import com.kodilla.ecommercee.domain.user.UserEntityDto;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserMapper {
     public UserEntity mapToUserEntity(final UserEntityDto userEntityDto){
         return new UserEntity(
