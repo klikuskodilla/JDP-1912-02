@@ -48,21 +48,21 @@ public class GroupDaoTestSuite {
 
         //Given
         product1.setGroup(group1);
-        group1.getProductsGroup().add(product1);
+        group1.getProducts().add(product1);
         product3.setGroup(group1);
-        group1.getProductsGroup().add(product3);
+        group1.getProducts().add(product3);
 
         groupDao.save(group1);
 
         product2.setGroup(group2);
-        group2.getProductsGroup().add(product2);
+        group2.getProducts().add(product2);
         product4.setGroup(group2);
-        group2.getProductsGroup().add(product4);
+        group2.getProducts().add(product4);
 
         groupDao.save(group2);
 
         //When
-        Long groupId = group2.getGroupId();
+        Long groupId = group2.getId();
         Long productId = product2.getId();
 
         Optional<Group> findGroupById = groupDao.findById(groupId);
@@ -74,7 +74,7 @@ public class GroupDaoTestSuite {
         assertEquals("Group Of Animals",findGroupById.get().getGroupName());
         assertEquals("BLUE",product3Description);
         assertEquals("CAT",productDao.findById(productId).get().getDescription());
-        assertEquals(findGroupById.get().getGroupId(),product2.getGroup().getGroupId());
-        assertNotEquals(group1.getGroupId(),product4.getGroup().getGroupId());
+        assertEquals(findGroupById.get().getId(),product2.getGroup().getId());
+        assertNotEquals(group1.getId(),product4.getGroup().getId());
     }
 }
