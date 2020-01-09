@@ -1,8 +1,11 @@
 package com.kodilla.ecommercee.controller;
 
+import com.kodilla.ecommercee.domain.Product.Product;
+import com.kodilla.ecommercee.domain.Product.ProductDto;
 import com.kodilla.ecommercee.domain.groups.GroupDto;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,11 +26,11 @@ public class GroupController {
     }
     @RequestMapping(method = RequestMethod.GET, value = "{groupId}")
     public GroupDto getGroup(@PathVariable Long groupId) {
-        return new GroupDto(1L,"name group");
+        return new GroupDto(1L,"name group", (List<ProductDto>) new Product("kk","elo",new BigDecimal(5.66)));
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "updateGroup")
     public GroupDto updateGroup(@RequestBody GroupDto groupDto) {
-        return new GroupDto(1L,"update group");
+        return new GroupDto(1L,"update group", (List<ProductDto>) new Product("zmiana 1","zmiana11",new BigDecimal(9.89)));
     }
 }
