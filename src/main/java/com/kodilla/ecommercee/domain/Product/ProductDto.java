@@ -17,6 +17,5 @@ public class ProductDto {
 
     private Long id;
     private String description;
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal price;
 }

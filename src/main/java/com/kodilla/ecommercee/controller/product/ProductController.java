@@ -25,13 +25,13 @@ public class ProductController {
         return new ProductDto(1L, "testGetProduct", new BigDecimal(15));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "createProduct")
-    public void createProduct( ProductDto productDto){
+    @RequestMapping(method = RequestMethod.POST, value = "createProduct", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void createProduct(@RequestBody ProductDto productDto){
 
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "updateProduct")
-    public ProductDto updateProduct( ProductDto productDto){
+    @RequestMapping(method = RequestMethod.PUT, value = "updateProduct", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ProductDto updateProduct(@RequestBody ProductDto productDto){
         return new ProductDto(1L, "updateProduct", new BigDecimal(20));
     }
 
