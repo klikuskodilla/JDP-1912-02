@@ -1,6 +1,7 @@
 package com.kodilla.ecommercee.domain.cart;
 
 import com.kodilla.ecommercee.domain.Product.Product;
+import com.kodilla.ecommercee.domain.order.OrderEntity;
 import com.kodilla.ecommercee.domain.user.UserEntity;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ public class CartEntity {
     private BigDecimal cost;
     private List<Product> products;
     private UserEntity user;
+    private OrderEntity order;
 
     public CartEntity() {
         this.products = new ArrayList<>();
@@ -66,5 +68,14 @@ public class CartEntity {
 
     public void setUser(UserEntity user) {
         this.user = user;
+    }
+
+    @OneToOne(mappedBy = "cart")
+    public OrderEntity getOrder() {
+        return order;
+    }
+
+    public void setOrder(OrderEntity order) {
+        this.order = order;
     }
 }

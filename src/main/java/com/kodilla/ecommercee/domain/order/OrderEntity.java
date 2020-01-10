@@ -86,7 +86,7 @@ public class OrderEntity {
         this.cart = cart;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     public UserEntity getUser() {
         return user;
