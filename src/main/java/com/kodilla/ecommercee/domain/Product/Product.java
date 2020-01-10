@@ -77,7 +77,12 @@ public class Product{
             CascadeType.MERGE,
             CascadeType.REFRESH
              }, fetch = FetchType.EAGER,
-            mappedBy = "products")
+            targetEntity = CartEntity.class)
+    @JoinTable(
+        name = "CARTS_PRODUCTS",
+                joinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "CART_ID", referencedColumnName = "CART_ID")
+    )
     public List<CartEntity> getCarts() {
         return carts;
     }
