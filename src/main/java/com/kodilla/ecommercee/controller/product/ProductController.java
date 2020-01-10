@@ -1,9 +1,8 @@
 package com.kodilla.ecommercee.controller.product;
 
 import com.kodilla.ecommercee.domain.Product.ProductDto;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -22,22 +21,22 @@ public class ProductController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getProduct")
-    public ProductDto getProduct(Long productId){
+    public ProductDto getProduct(@RequestParam Long productId) throws ProductNotFoundException{
         return new ProductDto(1L, "testGetProduct", new BigDecimal(15));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "createProduct")
-    public void createProduct(ProductDto productDto){
+    @RequestMapping(method = RequestMethod.POST, value = "createProduct", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void createProduct(@RequestBody ProductDto productDto){
 
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "updateProduct")
-    public ProductDto updateProduct(ProductDto productDto){
+    public ProductDto updateProduct(@RequestBody ProductDto productDto){
         return new ProductDto(1L, "updateProduct", new BigDecimal(20));
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteProduct")
-    public void deleteProduct(Long productId){
+    public void deleteProduct(@RequestParam Long productId){
     }
 
 }
