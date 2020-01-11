@@ -1,22 +1,14 @@
 package com.kodilla.ecommercee.domain.order.dao;
 
-import com.kodilla.ecommercee.domain.cart.CartEntity;
 import com.kodilla.ecommercee.domain.order.OrderEntity;
 import com.kodilla.ecommercee.domain.user.UserEntity;
-import com.kodilla.ecommercee.domain.user.UserEntityDto;
-import com.kodilla.ecommercee.domain.user.dao.UserEntityDao;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.Optional;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -53,14 +45,8 @@ public class OrderDaoTestSuite {
 
             UserEntity user = new UserEntity("James", "Bond", "007", "MI6@england.pl", "ABC123" );
 
-            CartEntity cart = new CartEntity();
-            cart.setCost(new BigDecimal(432.32));
-
             order.setUser(user);
             user.getOrders().add(order);
-
-            order.setCart(cart);
-            cart.setOrder(order);
 
         //When
             orderDao.save(order);
@@ -74,7 +60,6 @@ public class OrderDaoTestSuite {
             Assert.assertEquals("007", readOrder.get().getUser().getLogin());
             Assert.assertEquals("James", readOrder.get().getUser().getName());
             Assert.assertEquals("MI6@england.pl", readOrder.get().getUser().getMail());
-            Assert.assertEquals(BigDecimal.valueOf(432.32), readOrder.get().getCart().getCost());
 
         //CleanUp
             try {
@@ -83,7 +68,4 @@ public class OrderDaoTestSuite {
                 System.out.println(e);
             }
     }
-
-
-
 }
