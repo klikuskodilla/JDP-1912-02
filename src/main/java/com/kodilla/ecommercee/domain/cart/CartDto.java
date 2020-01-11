@@ -18,4 +18,7 @@ public class CartDto {
     private List<Product> products;
     private UserEntity user;
 
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
 }
