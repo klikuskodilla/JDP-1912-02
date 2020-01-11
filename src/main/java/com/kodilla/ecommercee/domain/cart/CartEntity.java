@@ -2,7 +2,6 @@ package com.kodilla.ecommercee.domain.cart;
 
 import com.kodilla.ecommercee.domain.Product.Product;
 import com.kodilla.ecommercee.domain.user.UserEntity;
-import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,7 +9,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
 @Entity(name = "CARTS")
 public class CartEntity {
     private Long id;
