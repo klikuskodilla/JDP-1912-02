@@ -42,6 +42,7 @@ public class CartDaoTestSuite {
 
         //When
         user.setCart(cart);
+        cart.setUser(user);
         userDao.save(user);
 
         //Then
