@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -24,20 +23,18 @@ public class Group {
         this.groupName = groupName;
         this.products = new ArrayList<>();
     }
-
-
     //public Group(){}
 
     @Id
     @GeneratedValue()
     @NotNull
+    @GeneratedValue
     @Column(name = "GROUP_ID")
     private Long id;
 
     @Column(name = "GROUP_NAME")
     @NotNull
     private String groupName;
-
     @OneToMany(
             targetEntity = Product.class,
             cascade = CascadeType.ALL,
@@ -45,5 +42,4 @@ public class Group {
             fetch = FetchType.LAZY
     )
     private List<Product> products = new ArrayList<>();
-
 }

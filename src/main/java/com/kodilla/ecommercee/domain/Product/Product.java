@@ -31,7 +31,6 @@ public class Product{
         this.carts = new ArrayList<>();
     }
 
-
     @Id
     @GeneratedValue
     @NotNull
@@ -63,7 +62,10 @@ public class Product{
         this.price = price;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE,
+            CascadeType.REFRESH})
     @JoinColumn(name = "GROUP_ID")
     public Group getGroup() {
         return group;
@@ -77,21 +79,18 @@ public class Product{
             CascadeType.PERSIST,
             CascadeType.MERGE,
             CascadeType.REFRESH
-             },
-            mappedBy = "products")
+             }, fetch = FetchType.EAGER,
+            targetEntity = CartEntity.class)
+    @JoinTable(
+        name = "CARTS_PRODUCTS",
+                joinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "CART_ID", referencedColumnName = "CART_ID")
+    )
     public List<CartEntity> getCarts() {
         return carts;
     }
 
     public void setCarts(List<CartEntity> carts) {
         this.carts = carts;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
