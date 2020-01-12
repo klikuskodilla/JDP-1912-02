@@ -42,6 +42,14 @@ public class Product{
     public void setId(Long id) {
         this.id = id;
     }
+    @Column(name = "NAME")
+     public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Column(name = "DESCRIPTION")
     public String getDescription() {
@@ -92,13 +100,5 @@ public class Product{
 
     public void setCarts(List<CartEntity> carts) {
         this.carts = carts;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
