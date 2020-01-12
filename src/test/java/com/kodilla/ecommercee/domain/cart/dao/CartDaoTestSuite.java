@@ -31,7 +31,7 @@ public class CartDaoTestSuite {
     private static final String MAIL = "mail@test.com";
     private static final String PASSWORD = "testpassword";
     private static final Integer SESSION_KEY = 12345;
-
+/*
     @Test
     public void testCartUserSave() {
 
@@ -65,6 +65,8 @@ public class CartDaoTestSuite {
             System.out.println(e);
         }
     }
+
+ */
 
     @Test
     public void testCartProductsSave() {
