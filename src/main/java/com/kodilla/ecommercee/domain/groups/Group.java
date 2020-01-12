@@ -31,10 +31,10 @@ public class Group {
     @Id
     @GeneratedValue()
     @NotNull
-    @Column(name = "group_id")
+    @Column(name = "GROUP_ID")
     private Long id;
 
-    @Column(name = "group_name")
+    @Column(name = "GROUP_NAME")
     @NotNull
     private String groupName;
 
