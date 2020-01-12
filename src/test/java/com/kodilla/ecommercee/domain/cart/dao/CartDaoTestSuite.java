@@ -34,7 +34,7 @@ public class CartDaoTestSuite {
 
     @Test
     public void testCartUserSave() {
-        /*
+
         //Given
         CartEntity cart = new CartEntity();
 
@@ -124,6 +124,5 @@ public class CartDaoTestSuite {
             System.out.println(e);
         }
     }
-*/
-    }
 }
+

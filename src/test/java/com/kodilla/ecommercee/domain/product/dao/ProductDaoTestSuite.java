@@ -31,7 +31,7 @@ public class ProductDaoTestSuite {
 
     @Test
     public void testProductDaoSave() {
-/*
+
         //Given
         Product testProduct = new Product("name","Test Description", new BigDecimal(123.5));
 
@@ -106,7 +106,5 @@ public class ProductDaoTestSuite {
         } catch (Exception e){
             System.out.println(e);
         }
-
- */
     }
 }
