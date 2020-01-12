@@ -26,14 +26,13 @@ public class CartDaoTestSuite {
     @Autowired
     private ProductDao productDao;
 
-    private static final String NAME = "John";
-    private static final String SURNAME = "Rambo";
-    private static final String LOGIN = "Test_Login";
-    private static final String MAIL = "mail@test.com";
-    private static final String PASSWORD = "testpassword";
-    private static final Integer SESSION_KEY = 12345;
+    private static final String NAME = "James";
+    private static final String SURNAME = "Holden";
+    private static final String LOGIN = "Another_test_login";
+    private static final String MAIL = "anotherTestMail@otherTest.pl";
+    private static final String PASSWORD = "theExpanse";
+    private static final Integer SESSION_KEY = 100000900;
 
-    @Transactional
     @Test
     public void testCartUserSave() {
         //Given

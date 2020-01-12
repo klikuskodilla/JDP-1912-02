@@ -41,13 +41,11 @@ public class UserDaoTestSuite {
 
 
         //CleanUp
-        //userDao.deleteById(id);
+        userDao.deleteById(id);
     }
 
     @Test
     public void testUserDaoSaveWithOrderAndCart(){
-        //CleanBefore
-        //userDao.deleteAll();
 
         //Given
         UserEntity user = new UserEntity(NAME, SURNAME, "Test Login 2", "mail2@test.com", PASSWORD);
@@ -88,10 +86,7 @@ public class UserDaoTestSuite {
         Assert.assertEquals(readUser.get().getOrders().get(1).getUser().getId(), user.getId());
         Assert.assertEquals(readUser.get().getCart().getUser().getId(), user.getId());
 
-
-
-
         //CleanUp
-        //userDao.deleteById(id);
+        userDao.deleteById(id);
     }
 }
