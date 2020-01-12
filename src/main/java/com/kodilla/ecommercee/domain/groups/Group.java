@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ public class Group {
     //public Group(){}
 
     @Id
-    @GeneratedValue()
     @NotNull
     @GeneratedValue
     @Column(name = "GROUP_ID")
