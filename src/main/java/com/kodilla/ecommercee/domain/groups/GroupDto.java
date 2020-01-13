@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 
 public class GroupDto {
-    private Long groupId;
+    private Long group_id;
     private String groupName;
     private List<ProductDto> productsGroup;
 }

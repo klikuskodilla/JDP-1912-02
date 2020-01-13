@@ -15,13 +15,13 @@ public interface GroupDao extends CrudRepository<Group, Long> {
     List<Group> findAll();
 
     @Override
-    Optional<Group> findById(Long id);
+    Optional<Group> findById(Long group_id);
 
     @Override
     Group save(Group group);
 
     @Override
-    void deleteById(Long id);
+    void deleteById(Long group_id);
 
     @Override
     long count();

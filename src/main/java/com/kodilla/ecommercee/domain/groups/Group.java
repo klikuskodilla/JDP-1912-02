@@ -22,13 +22,11 @@ public class Group {
         this.groupName = groupName;
         this.products = new ArrayList<>();
     }
-    //public Group(){}
-
     @Id
     @NotNull
     @GeneratedValue
     @Column(name = "GROUP_ID")
-    private Long id;
+    private Long group_id;
 
     @Column(name = "GROUP_NAME")
     @NotNull
