@@ -18,14 +18,11 @@ public class Product{
     private BigDecimal price;
     private Group group;
     private List<CartEntity> carts;
-    private String name;
-
 
     public Product() {
     }
 
-    public Product(String name, String description, BigDecimal price) {
-        this.name = name;
+    public Product(String description, BigDecimal price) {
         this.description = description;
         this.price = price;
         this.carts = new ArrayList<>();
@@ -87,11 +84,4 @@ public class Product{
         this.carts = carts;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class DbGroup {
+    /*
         @Autowired
         private GroupDao groupDao;
 
@@ -24,4 +25,6 @@ public class DbGroup {
         public Group saveGroup(final Group group) {
             return groupDao.save(group);
         }
+
+     */
 }

@@ -1,43 +1,32 @@
 package com.kodilla.ecommercee.controller;
 
-import com.kodilla.ecommercee.controller.exceptions.GroupNotFoundException;
+import com.kodilla.ecommercee.domain.Product.ProductDto;
 import com.kodilla.ecommercee.domain.groups.GroupDto;
-import com.kodilla.ecommercee.mapper.GroupMapper;
-import com.kodilla.ecommercee.service.DbGroup;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/")
+@RequestMapping("/v1/group/")
 public class GroupController {
 
-    @Autowired
-    private GroupMapper groupMapper;
-
-    @Autowired
-    private DbGroup dbGroup;
 
     @RequestMapping(method = RequestMethod.GET, value = "getGroups")
     public List<GroupDto> getGroups() {
-        return groupMapper.mapToGroupDtoList(dbGroup.getGroups());
+        List<GroupDto>groupDtos = new ArrayList<>();
+        groupDtos.add(new GroupDto(2L,"group name 2", Collections.singletonList(new ProductDto(2L, "description 2", new BigDecimal(2.1)))));
+        return groupDtos;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "{groupId}")
-    public GroupDto getGroupWithId(@PathVariable Long groupId) throws GroupNotFoundException {
-        return groupMapper.mapToGroupDto(dbGroup.getGroupById(groupId).orElseThrow(GroupNotFoundException::new));
+    public GroupDto getGroupWithId(@PathVariable Long groupId){
+        return new GroupDto(1L,"group name 1", Collections.singletonList(new ProductDto(1L, "description 1", new BigDecimal(1.22))));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "createGroup", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void createGroup(@RequestBody GroupDto groupDto) {
-        dbGroup.saveGroup(groupMapper.mapToGroup(groupDto));
+    @RequestMapping(method = RequestMethod.POST, value = "createGroup")
+    public GroupDto createGroup(GroupDto groupDto) {
+        return new GroupDto(3L,"group name 3", Collections.singletonList(new ProductDto(3L, "description 3", new BigDecimal(3.22))));
     }
-
-    @RequestMapping(method = RequestMethod.PUT, value = "updateGroup")
-    public GroupDto updateGroup(@RequestBody GroupDto groupDto) {
-        return groupMapper.mapToGroupDto(dbGroup.saveGroup(groupMapper.mapToGroup(groupDto)));
-    }
-
 }

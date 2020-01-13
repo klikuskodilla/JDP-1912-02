@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class GroupMapper {
+    /*
     public Group mapToGroup(final GroupDto groupDto) {
         return new Group(
                 groupDto.getId(),
@@ -28,5 +29,7 @@ public class GroupMapper {
                 .map(g -> new GroupDto(g.getId(), g.getGroupName()))
                 .collect(Collectors.toList());
     }
+
+     */
 }
 
