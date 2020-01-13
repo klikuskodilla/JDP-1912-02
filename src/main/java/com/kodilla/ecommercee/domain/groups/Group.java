@@ -22,7 +22,8 @@ public class Group {
 
     @Id
     @NotNull
-    @Column(name = "GROUP_ID")
+    @GeneratedValue
+    @Column(name = "GROUP_ID", unique = true)
     private Long groupId;
 
     @NotNull
@@ -35,11 +36,11 @@ public class Group {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    private List<Product> productsGroup = new ArrayList<>();
+    private List<Product> products;
 
-    public Group(String groupName, List<Product> productsGroup) {
+    public Group(String groupName) {
         this.groupName = groupName;
-        this.productsGroup = productsGroup;
+        this.products = new ArrayList<>();
     }
 
 
