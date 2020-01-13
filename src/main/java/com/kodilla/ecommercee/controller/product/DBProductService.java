@@ -48,11 +48,6 @@ public class DBProductService {
             product.setGroup(group);
             group.getProducts().add(product);
             saveGroupRepository.save(group);
-            /*Product product1 = new Product(product.getDescription(),product.getPrice());
-            Group group = new Group(product.getGroup().getGroupName());
-            product1.setGroup(group);
-            group.getProducts().add(product1);
-            saveGroupRepository.save(group);*/
             return saveProductRepository.findByDescription(product.getDescription()).get();
         }
     }
