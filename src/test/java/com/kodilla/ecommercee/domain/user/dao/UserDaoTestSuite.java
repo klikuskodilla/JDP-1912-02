@@ -41,14 +41,14 @@ public class UserDaoTestSuite {
         Assert.assertEquals(readUser.get().getLoggedIn(), false);
 
 
-        //CleanUp
-        //userDao.deleteById(id);
+        CleanUp
+        userDao.deleteById(id);
     }
 
     @Test
     public void testUserDaoSaveWithOrderAndCart(){
         //CleanBefore
-        //userDao.deleteAll();
+        userDao.deleteAll();
 
         //Given
         UserEntity user = new UserEntity(NAME, SURNAME, "Test Login 2", "mail2@test.com", PASSWORD);
@@ -95,6 +95,6 @@ public class UserDaoTestSuite {
 
 
         //CleanUp
-        //userDao.deleteById(id);
+        userDao.deleteById(id);
     }
 }
