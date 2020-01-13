@@ -41,7 +41,7 @@ public class UserDaoTestSuite {
         Assert.assertEquals(readUser.get().getLoggedIn(), false);
 
 
-        CleanUp
+        //CleanUp
         userDao.deleteById(id);
     }
 
