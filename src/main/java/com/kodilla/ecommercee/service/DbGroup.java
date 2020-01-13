@@ -18,13 +18,13 @@ public class DbGroup {
             return groupDao.findAll();
         }
 
-        public Optional<Group> getGroupById(final Long groupId) {
-            return groupDao.findById(groupId);
+        public Optional<Group> getGroupById(final Long group_id) {
+            return groupDao.findById(group_id);
         }
 
         public Group saveGroup(final Group group) {
             return groupDao.save(group);
         }
+*/
 
-     */
 }

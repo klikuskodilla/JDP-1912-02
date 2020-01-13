@@ -25,13 +25,11 @@ public class Group {
     }
 
 
-    //public Group(){}
-
     @Id
     @GeneratedValue()
     @NotNull
     @Column(name = "group_id")
-    private Long id;
+    private Long group_id;
 
     @Column(name = "group_name")
     @NotNull

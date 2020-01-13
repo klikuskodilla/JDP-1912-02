@@ -32,10 +32,10 @@ public class GroupDaoTestSuite {
 
     @Before
     public void sampleData(){
-        product1 = new Product("RED","RGB",new BigDecimal(2.22));
-        product2 = new Product("CAT","MASCOT", new BigDecimal(1.22));
-        product3 = new Product("BLUE","RGB", new BigDecimal(3.22));
-        product4 = new Product("DOG","MASCOT",new BigDecimal(0.43));
+        product1 = new Product("RGB",new BigDecimal(2.22));
+        product2 = new Product("MASCOT", new BigDecimal(1.22));
+        product3 = new Product("RGB", new BigDecimal(3.22));
+        product4 = new Product("MASCOT",new BigDecimal(0.43));
 
         group1 = new Group("Group Of Colors");
         group2 = new Group("Group Of Animals");
@@ -62,7 +62,7 @@ public class GroupDaoTestSuite {
         groupDao.save(group2);
 
         //When
-        Long groupId = group2.getId();
+        Long groupId = group2.getGroup_id();
         Long productId = product2.getId();
 
         Optional<Group> findGroupById = groupDao.findById(groupId);
@@ -74,11 +74,11 @@ public class GroupDaoTestSuite {
         assertEquals("Group Of Animals",findGroupById.get().getGroupName());
         assertEquals("RGB",product3Description);
         assertEquals("MASCOT",productDao.findById(productId).get().getDescription());
-        assertEquals(findGroupById.get().getId(),product2.getGroup().getId());
-        assertNotEquals(group1.getId(),product4.getGroup().getId());
+        assertEquals(findGroupById.get().getGroup_id(),product2.getGroup().getGroup_id());
+        assertNotEquals(group1.getGroup_id(),product4.getGroup().getGroup_id());
 
         //Clean up
-        groupDao.delete(group1);
-        groupDao.delete(group2);
+       groupDao.delete(group1);
+       groupDao.delete(group2);
     }
 }
