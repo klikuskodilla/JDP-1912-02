@@ -33,7 +33,7 @@ public class ProductDaoTestSuite {
     public void testProductDaoSave() {
 
         //Given
-        Product testProduct = new Product("name","Test Description", new BigDecimal(123.5));
+        Product testProduct = new Product("Test Description", new BigDecimal(123.5));
 
         //When
         productDao.save(testProduct);
@@ -55,8 +55,8 @@ public class ProductDaoTestSuite {
     public void testProductEntityWithOtherEntities() {
 
         //Given
-        Product testProduct1 = new Product("name","Test Description with other Entities", new BigDecimal(123.5));
-        Product testProduct2 = new Product("name","Test no. 2 with other Entities", new BigDecimal(1500));
+        Product testProduct1 = new Product("Test Description with other Entities", new BigDecimal(123.5));
+        Product testProduct2 = new Product("Test no. 2 with other Entities", new BigDecimal(1500));
         Group testGroup1 = new Group("Spozywcze");
         Group testGroup2 = new Group("AGD");
         CartEntity testCart1 = new CartEntity();
@@ -99,8 +99,8 @@ public class ProductDaoTestSuite {
        try {
             productDao.deleteById(testProduct1.getId());
             productDao.deleteById(testProduct2.getId());
-            groupDao.deleteById(testGroup1.getId());
-            groupDao.deleteById(testGroup2.getId());
+            groupDao.deleteById(testGroup1.getGroup_id());
+            groupDao.deleteById(testGroup2.getGroup_id());
             cartEntityDao.deleteById(testCart1.getId());
             cartEntityDao.deleteById(testCart2.getId());
         } catch (Exception e){
