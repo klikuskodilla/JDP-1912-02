@@ -16,8 +16,4 @@ public class OrderDto {
     private String adress;
     private Boolean isPaid;
     private Date created;
-    private UserEntity user;
-    private CartEntity cart;
-
-
 }
