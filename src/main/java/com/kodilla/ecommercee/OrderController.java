@@ -32,7 +32,7 @@ public class OrderController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "updateOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public OrderDto updateOrder(@RequestBody OrderDto orderDto) {
-        return new OrderDto(3, "testAddress3", false, new Date());
+        return new OrderDto(3L, "testAddress3", false, new Date());
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteOrder")
