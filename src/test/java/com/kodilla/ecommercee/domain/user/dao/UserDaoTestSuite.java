@@ -41,7 +41,7 @@ public class UserDaoTestSuite {
 
 
         //CleanUp
-        //userDao.deleteById(id);
+        userDao.deleteById(id);
     }
 
     @Test
@@ -92,6 +92,6 @@ public class UserDaoTestSuite {
 
 
         //CleanUp
-        //userDao.deleteById(id);
+        userDao.deleteById(id);
     }
 }
