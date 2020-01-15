@@ -99,8 +99,8 @@ public class ProductDaoTestSuite {
        try {
             productDao.deleteById(testProduct1.getId());
             productDao.deleteById(testProduct2.getId());
-            groupDao.deleteById(testGroup1.getGroupId());
-            groupDao.deleteById(testGroup2.getGroupId());
+            groupDao.deleteById(testGroup1.getGroup_id());
+            groupDao.deleteById(testGroup2.getGroup_id());
             cartEntityDao.deleteById(testCart1.getId());
             cartEntityDao.deleteById(testCart2.getId());
         } catch (Exception e){

@@ -1,12 +1,6 @@
-package com.kodilla.ecommercee.service;
+package com.kodilla.ecommercee.controller.group.service;
 
-import com.kodilla.ecommercee.domain.groups.Group;
-import com.kodilla.ecommercee.domain.groups.dao.GroupDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class DbGroup {

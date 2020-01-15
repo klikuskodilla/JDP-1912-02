@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee.mapper;
+package com.kodilla.ecommercee.controller.group.mapper;
 
 import com.kodilla.ecommercee.domain.Product.ProductDto;
 import com.kodilla.ecommercee.domain.groups.Group;
