@@ -24,9 +24,6 @@ public class Group {
         this.products = new ArrayList<>();
     }
 
-
-
-
     @Id
     @GeneratedValue()
     @NotNull
@@ -44,5 +41,4 @@ public class Group {
             fetch = FetchType.LAZY
     )
     private List<Product> products = new ArrayList<>();
-
 }
