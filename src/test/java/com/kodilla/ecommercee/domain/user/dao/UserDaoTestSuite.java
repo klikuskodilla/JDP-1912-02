@@ -38,16 +38,17 @@ public class UserDaoTestSuite {
         Long id = user1.getId();
         Optional<UserEntity> readUser = userDao.findById(id);
         Assert.assertTrue(readUser.isPresent());
+        Assert.assertEquals(readUser.get().getLoggedIn(), false);
 
 
         //CleanUp
-        //userDao.deleteById(id);
+        userDao.deleteById(id);
     }
 
     @Test
     public void testUserDaoSaveWithOrderAndCart(){
         //CleanBefore
-        //userDao.deleteAll();
+        userDao.deleteAll();
 
         //Given
         UserEntity user = new UserEntity(NAME, SURNAME, "Test Login 2", "mail2@test.com", PASSWORD);
@@ -62,6 +63,7 @@ public class UserDaoTestSuite {
         user.getOrders().add(order2);
         order1.setUser(user);
         order2.setUser(user);
+        user.setLoggedIn(true);
 
         //When
         userDao.save(user);
@@ -87,11 +89,12 @@ public class UserDaoTestSuite {
         Assert.assertEquals(readUser.get().getOrders().get(0).getUser().getId(), user.getId());
         Assert.assertEquals(readUser.get().getOrders().get(1).getUser().getId(), user.getId());
         Assert.assertEquals(readUser.get().getCart().getUser().getId(), user.getId());
+        Assert.assertEquals(readUser.get().getLoggedIn(), true);
 
 
 
 
         //CleanUp
-        //userDao.deleteById(id);
+        userDao.deleteById(id);
     }
 }
