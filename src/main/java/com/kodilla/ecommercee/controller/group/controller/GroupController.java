@@ -1,7 +1,6 @@
 package com.kodilla.ecommercee.controller.group.controller;
 
 import com.kodilla.ecommercee.domain.Product.ProductDto;
-import com.kodilla.ecommercee.domain.groups.Group;
 import com.kodilla.ecommercee.domain.groups.GroupDto;
 import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
