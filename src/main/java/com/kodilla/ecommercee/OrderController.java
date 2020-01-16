@@ -25,7 +25,7 @@ public class OrderController {
         return new OrderDto(2L, "testAddress2", true, new Date());
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "createNewOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "createNewOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createNewOrder(@RequestBody OrderDto orderDto) {
 
     }
