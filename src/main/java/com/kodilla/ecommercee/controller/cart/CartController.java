@@ -1,11 +1,11 @@
 package com.kodilla.ecommercee.controller.cart;
 
 import com.kodilla.ecommercee.domain.Product.ProductDto;
+import com.kodilla.ecommercee.domain.order.OrderDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("/v1/cart")
@@ -25,18 +25,22 @@ public class CartController {
     }
 
     @PutMapping("/{cartID}/addProducts/{productID}")
-    public void addProduct(@PathVariable Long cartID, @PathVariable Long productID) throws NotFoundException{
-
+    public Map<String,String> addProduct(@PathVariable Long cartID, @PathVariable Long productID) throws NotFoundException {
+        Map<String, String> productDetails = new HashMap<>();
+        productDetails.put("item1", "price1");
+        productDetails.put("item2", "price2");
+        productDetails.put("item2", "price3");
+        return productDetails;
     }
 
     @DeleteMapping("/{cartID}/deleteProduct/{productID}")
-    public void deleteProduct(@PathVariable Long cartID, @PathVariable Long productID) throws NotFoundException{
+    public void deleteProduct(@PathVariable Long cartID, @PathVariable Long productID) throws NotFoundException {
 
     }
 
     @PostMapping("/{cardID}/createOrder")
-    public void createOrder(@PathVariable Long cardID,@RequestParam("address") String address) throws NotFoundException{
-
+    public OrderDto createOrder(@PathVariable Long cardID, @RequestParam("address") String address) throws NotFoundException {
+        return new OrderDto(1L, "address1", false, new Date());
     }
 
 }
