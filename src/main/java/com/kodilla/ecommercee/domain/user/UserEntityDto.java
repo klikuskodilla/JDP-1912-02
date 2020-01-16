@@ -13,14 +13,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserEntityDto {
-    private BigInteger id;
+    private Long id;
     private String name;
     private String surname;
     private String login;
     private String mail;
     private String password;
     private Integer sessionKey;
-    private CartEntity cart;
-    private List<OrderEntity> orders;
+    private Boolean loggedIn;
+
 
 }
