@@ -2,13 +2,9 @@ package com.kodilla.ecommercee.domain.order;
 
 import com.kodilla.ecommercee.domain.cart.CartEntity;
 import com.kodilla.ecommercee.domain.user.UserEntity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -86,7 +82,11 @@ public class OrderEntity {
         this.cart = cart;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE,
+            CascadeType.REFRESH
+    })
     @JoinColumn(name = "USER_ID")
     public UserEntity getUser() {
         return user;

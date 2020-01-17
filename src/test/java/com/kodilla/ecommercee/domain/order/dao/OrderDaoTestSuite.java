@@ -1,38 +1,28 @@
 package com.kodilla.ecommercee.domain.order.dao;
 
 import com.kodilla.ecommercee.domain.order.OrderEntity;
+import com.kodilla.ecommercee.domain.user.UserEntity;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Date;
 import java.util.Optional;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OrderDaoTestSuite {
     @Autowired
     private OrderDao orderDao;
+
     private static final String ADRESS = "Test adress 1";
-    //private static final Boolean PAYMENT_STATUS = false;
-
-
-    @Test
-    public void testContextLoader(){
-
-    }
 
     @Test
     public void testOrderDaoSave(){
 
         //Given
         OrderEntity order = new OrderEntity(ADRESS);
-        order.setCreated(new Date());
 
         //When
         orderDao.save(order);
@@ -47,6 +37,35 @@ public class OrderDaoTestSuite {
         orderDao.deleteById(id);
     }
 
+    @Test
+    public void testOrderEntityWithOtherEntities() {
 
+        //Given
+            OrderEntity order = new OrderEntity(ADRESS);
 
+            UserEntity user = new UserEntity("James", "Bond", "007", "MI6@england.pl", "ABC123" );
+
+            order.setUser(user);
+            user.getOrders().add(order);
+
+        //When
+            orderDao.save(order);
+            Optional<OrderEntity> readOrder = orderDao.findById(order.getId());
+        //Then
+
+            Assert.assertTrue(readOrder.isPresent());
+
+            Assert.assertEquals("Test adress 1", readOrder.get().getAdress());
+            Assert.assertEquals("Bond", readOrder.get().getUser().getSurname());
+            Assert.assertEquals("007", readOrder.get().getUser().getLogin());
+            Assert.assertEquals("James", readOrder.get().getUser().getName());
+            Assert.assertEquals("MI6@england.pl", readOrder.get().getUser().getMail());
+
+        //CleanUp
+            try {
+                orderDao.deleteById(readOrder.get().getId());
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+    }
 }
