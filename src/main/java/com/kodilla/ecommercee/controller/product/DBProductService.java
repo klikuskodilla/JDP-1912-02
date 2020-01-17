@@ -49,10 +49,6 @@ public class DBProductService {
         }
     }
 
-    public Product updateProduct(final Product product){
-        return saveProductRepository.save(product);
-    }
-
 
     public void deleteProductById(final Long productId){
         deletePeoductRepository.deleteById(productId);
