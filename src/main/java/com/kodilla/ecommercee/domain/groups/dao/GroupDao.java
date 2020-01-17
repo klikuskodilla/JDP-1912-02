@@ -11,6 +11,8 @@ import java.util.Optional;
 @Transactional
 public interface GroupDao extends CrudRepository<Group, Long> {
 
+    Optional<Group> findByGroupName(String groupName);
+
     @Override
     List<Group> findAll();
 

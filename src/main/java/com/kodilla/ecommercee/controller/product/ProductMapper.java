@@ -3,8 +3,6 @@ package com.kodilla.ecommercee.controller.product;
 import com.kodilla.ecommercee.domain.Product.Product;
 import com.kodilla.ecommercee.domain.Product.ProductDto;
 import com.kodilla.ecommercee.domain.groups.Group;
-import com.kodilla.ecommercee.domain.groups.dao.GroupDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,8 +10,6 @@ import java.util.stream.Collectors;
 
 @Component
 public class ProductMapper {
-    @Autowired
-    private GroupDao groupDao;
 
     public Product mapToProduct(final ProductDto productDto){
         Product product = new Product(
