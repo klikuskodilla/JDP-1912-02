@@ -1,6 +1,7 @@
 package com.kodilla.ecommercee.controller.cart;
 
 import com.kodilla.ecommercee.domain.Product.ProductDto;
+import com.kodilla.ecommercee.domain.cart.CartDto;
 import com.kodilla.ecommercee.domain.order.OrderDto;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,12 +26,17 @@ public class CartController {
     }
 
     @PutMapping("/{cartID}/addProducts/{productID}")
-    public Map<String,String> addProduct(@PathVariable Long cartID, @PathVariable Long productID) throws NotFoundException {
-        Map<String, String> productDetails = new HashMap<>();
-        productDetails.put("item1", "price1");
-        productDetails.put("item2", "price2");
-        productDetails.put("item2", "price3");
-        return productDetails;
+    public CartDto addProduct(@PathVariable Long cartID, @PathVariable Long productID) throws NotFoundException {
+        CartDto cartDto = new CartDto();
+        cartDto.setId(1L);
+        cartDto.setCost(new BigDecimal(15));
+        List<ProductDto> productDtoList = new ArrayList<>();
+        ProductDto productDto1 = new ProductDto(1L, "item1", new BigDecimal(6));
+        ProductDto productDto2 = new ProductDto(2L, "item2", new BigDecimal(9));
+        productDtoList.add(productDto1);
+        productDtoList.add(productDto2);
+        cartDto.setProductDetails(productDtoList);
+        return cartDto;
     }
 
     @DeleteMapping("/{cartID}/deleteProduct/{productID}")
