@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee.service;
+package com.kodilla.ecommercee.controller.order;
 
 import org.springframework.stereotype.Service;
 

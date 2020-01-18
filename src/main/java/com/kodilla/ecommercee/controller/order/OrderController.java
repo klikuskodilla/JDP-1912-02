@@ -1,7 +1,7 @@
-package com.kodilla.ecommercee;
+package com.kodilla.ecommercee.controller.order;
 
 import com.kodilla.ecommercee.domain.order.OrderDto;
-import com.kodilla.ecommercee.exception.OrderNotFoundException;
+import com.kodilla.ecommercee.controller.order.OrderNotFoundException;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 

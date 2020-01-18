@@ -1,4 +1,4 @@
-package com.kodilla.ecommercee.mapper;
+package com.kodilla.ecommercee.controller.order;
 
 import com.kodilla.ecommercee.domain.order.OrderDto;
 import com.kodilla.ecommercee.domain.order.OrderEntity;
