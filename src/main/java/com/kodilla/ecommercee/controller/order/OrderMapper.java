@@ -22,12 +22,12 @@ public class OrderMapper  {
     @Autowired
     CartEntityDao cartDao;
 
-    public OrderEntity mapToOrder(final OrderDto orderDto) throws ProductNotFoundException {
+    public OrderEntity mapToOrder(final OrderDto orderDto) throws UserNotFoundException {
         OrderEntity orderEntity = new OrderEntity(
                 orderDto.getAddress()
         );
         orderEntity.setPaid(orderDto.getIsPaid());
-        orderEntity.setUser(userDao.findById(orderDto.getUserId()).orElseThrow(ProductNotFoundException::new));
+        orderEntity.setUser(userDao.findById(orderDto.getUserId()).orElseThrow(UserNotFoundException::new));
         orderEntity.setCart(cartDao.findById(orderDto.getCartId()).orElse(null));
 
         return orderEntity;
