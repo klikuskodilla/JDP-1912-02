@@ -46,7 +46,7 @@ public class CartController {
 
     @PostMapping("/{cardID}/createOrder")
     public OrderDto createOrder(@PathVariable Long cardID, @RequestParam("address") String address) throws NotFoundException {
-        return new OrderDto(1L, "address1", false, new Date());
+        return new OrderDto(1L, "address1", false, new Date(), 1L, 1L, new BigDecimal(100));
     }
 
 }
