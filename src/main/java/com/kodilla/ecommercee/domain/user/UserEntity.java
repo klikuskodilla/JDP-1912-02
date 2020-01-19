@@ -2,15 +2,11 @@ package com.kodilla.ecommercee.domain.user;
 
 import com.kodilla.ecommercee.domain.cart.CartEntity;
 import com.kodilla.ecommercee.domain.order.OrderEntity;
-import com.kodilla.ecommercee.domain.user.dao.UserEntityDao;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -25,7 +21,9 @@ public class UserEntity {
     private String mail;
     private String password;
     private Integer sessionKey;
-    private Boolean loggedIn;
+    private Boolean isLoggedIn;
+    private Boolean isBlocked;
+    private Date sessionKeyValidTo;
     private CartEntity cart;
     private List<OrderEntity> orders = new ArrayList<>();
 
@@ -38,7 +36,8 @@ public class UserEntity {
         this.login = login;
         this.mail = mail;
         this.password = password;
-        this.loggedIn = false;
+        this.isLoggedIn = false;
+        this.isBlocked = false;
     }
 
     @Id
@@ -85,8 +84,18 @@ public class UserEntity {
     }
 
     @Column(name = "LOGIN_STATUS")
-    public Boolean getLoggedIn() {
-        return loggedIn;
+    public Boolean getIsLoggedIn() {
+        return isLoggedIn;
+    }
+
+    @Column(name = "IS_BLOCKED")
+    public Boolean getBlocked() {
+        return isBlocked;
+    }
+
+    @Column(name = "SESSION_KEY_CREATED_ON")
+    public Date getSessionKeyValidTo() {
+        return sessionKeyValidTo;
     }
 
     public void setId(Long id) {
@@ -117,8 +126,16 @@ public class UserEntity {
         this.sessionKey = sessionKey;
     }
 
-    public void setLoggedIn(Boolean loggedIn) {
-        this.loggedIn = loggedIn;
+    public void setIsLoggedIn(Boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
+    }
+
+    public void setBlocked(Boolean blocked) {
+        isBlocked = blocked;
+    }
+
+    public void setSessionKeyValidTo(Date sessionKeyValidTo) {
+        this.sessionKeyValidTo = sessionKeyValidTo;
     }
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
