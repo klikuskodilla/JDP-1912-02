@@ -17,7 +17,7 @@ public class ProductMapper {
                 productDto.getPrice()
         );
         product.setId(productDto.getId());
-        product.setGroup(new Group(productDto.getGorupName()));
+        product.setGroup(new Group(productDto.getGroupName()));
 
         return product;
     }
