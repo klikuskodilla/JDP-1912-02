@@ -18,7 +18,7 @@ public class DBProductService {
     @Autowired
     private ProductDao saveProductRepository;
     @Autowired
-    private ProductDao deletePeoductRepository;
+    private ProductDao deleteProductRepository;
     @Autowired
     private GroupDao setGroupRepository;
     @Autowired
@@ -51,7 +51,7 @@ public class DBProductService {
 
 
     public void deleteProductById(final Long productId){
-        deletePeoductRepository.deleteById(productId);
+        deleteProductRepository.deleteById(productId);
     }
 
 }
