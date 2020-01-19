@@ -38,7 +38,7 @@ public class UserDaoTestSuite {
         Long id = user1.getId();
         Optional<UserEntity> readUser = userDao.findById(id);
         Assert.assertTrue(readUser.isPresent());
-        Assert.assertEquals(readUser.get().getLoggedIn(), false);
+        Assert.assertEquals(readUser.get().getIsLoggedIn(), false);
 
 
         //CleanUp
@@ -63,7 +63,7 @@ public class UserDaoTestSuite {
         user.getOrders().add(order2);
         order1.setUser(user);
         order2.setUser(user);
-        user.setLoggedIn(true);
+        user.setIsLoggedIn(true);
 
         //When
         userDao.save(user);
@@ -89,7 +89,7 @@ public class UserDaoTestSuite {
         Assert.assertEquals(readUser.get().getOrders().get(0).getUser().getId(), user.getId());
         Assert.assertEquals(readUser.get().getOrders().get(1).getUser().getId(), user.getId());
         Assert.assertEquals(readUser.get().getCart().getUser().getId(), user.getId());
-        Assert.assertEquals(readUser.get().getLoggedIn(), true);
+        Assert.assertEquals(readUser.get().getIsLoggedIn(), true);
 
 
 
