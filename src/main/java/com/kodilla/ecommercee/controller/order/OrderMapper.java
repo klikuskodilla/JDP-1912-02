@@ -1,11 +1,12 @@
 package com.kodilla.ecommercee.controller.order;
 
 import com.kodilla.ecommercee.controller.user.UserNotFoundException;
+import com.kodilla.ecommercee.domain.cart.CartEntity;
 import com.kodilla.ecommercee.domain.cart.dao.CartEntityDao;
 import com.kodilla.ecommercee.domain.order.OrderDto;
 import com.kodilla.ecommercee.domain.order.OrderEntity;
+import com.kodilla.ecommercee.domain.order.dao.OrderDao;
 import com.kodilla.ecommercee.domain.user.dao.UserEntityDao;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,15 +22,27 @@ public class OrderMapper  {
     @Autowired
     CartEntityDao cartDao;
 
-    public OrderEntity mapToOrder(final OrderDto orderDto) throws NullPointerException {
-        OrderEntity orderEntity = new OrderEntity(
-                orderDto.getAddress()
-        );
-        orderEntity.setPaid(orderDto.getIsPaid());
-        orderEntity.setUser(userDao.findById(orderDto.getUserId()).orElseThrow(NullPointerException::new));
-        orderEntity.setCart(cartDao.findById(orderDto.getCartId()).orElse(null));
+    @Autowired
+    OrderDao orderDao;
 
-        return orderEntity;
+    public OrderEntity mapToOrder(final OrderDto orderDto) throws UserNotFoundException {
+
+        if(orderDao.findById(orderDto.getId()).isPresent()) {
+            OrderEntity orderEntity = orderDao.findById(orderDto.getId()).get();
+            orderEntity.setAdress(orderDto.getAddress());
+            orderEntity.setPaid(orderDto.getIsPaid());
+            orderEntity.setUser(userDao.findById(orderDto.getUserId()).orElseThrow(UserNotFoundException::new));
+            orderEntity.setCart(cartDao.findById(orderDto.getCartId()).orElse(new CartEntity()));
+            return orderEntity;
+        }else {
+            OrderEntity orderEntity = new OrderEntity(
+                    orderDto.getAddress()
+            );
+            orderEntity.setPaid(orderDto.getIsPaid());
+            orderEntity.setUser(userDao.findById(orderDto.getUserId()).orElseThrow(UserNotFoundException::new));
+            orderEntity.setCart(cartDao.findById(orderDto.getCartId()).orElse(new CartEntity()));
+            return orderEntity;
+        }
     }
 
     public OrderDto orderDtoToMap(final OrderEntity orderEntity) {
