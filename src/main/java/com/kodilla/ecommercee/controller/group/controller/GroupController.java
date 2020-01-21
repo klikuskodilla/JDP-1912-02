@@ -14,20 +14,20 @@ public class GroupController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getGroups")
     public List<GroupDto> getGroups() {
-        List<ProductDto>productDtos = new ArrayList<>();
-        productDtos.add(new ProductDto(2L,"description 2",new BigDecimal(2.2)));
-        productDtos.add(new ProductDto(2L,"description 3",new BigDecimal(3.2)));
         List<GroupDto> groupDtos = new ArrayList<>();
-        groupDtos.add(new GroupDto(2L,"group name 2",productDtos));
+        groupDtos.add(new GroupDto(2L,"group name 2"));
+        groupDtos.add(new GroupDto(22L,"group name 22"));
         return groupDtos;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "{groupId}")
     public GroupDto getGroupWithId(@PathVariable Long groupId){
-        return new GroupDto(1L,"group 1", Collections.singletonList(new ProductDto(1L, "product 1", new BigDecimal(1.1))));
+        return new GroupDto(1L,"group 1");
 
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createGroup")
-    public void createGroup( GroupDto groupDto) {}
+    public GroupDto createGroup( GroupDto groupDto) {
+        return new GroupDto(3L,"group 3");
+    }
 }

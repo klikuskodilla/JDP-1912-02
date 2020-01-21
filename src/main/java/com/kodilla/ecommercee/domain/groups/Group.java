@@ -1,6 +1,7 @@
 package com.kodilla.ecommercee.domain.groups;
 
 import com.kodilla.ecommercee.domain.Product.Product;
+import com.kodilla.ecommercee.domain.Product.ProductDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -38,4 +39,7 @@ public class Group {
             fetch = FetchType.LAZY
     )
     private List<Product> products = new ArrayList<>();
+
+    public Group(Long group_id, String groupName) {
+    }
 }
