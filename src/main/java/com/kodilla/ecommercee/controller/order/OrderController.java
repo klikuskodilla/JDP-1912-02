@@ -1,4 +1,5 @@
 package com.kodilla.ecommercee.controller.order;
+import com.kodilla.ecommercee.controller.user.UserNotFoundException;
 import com.kodilla.ecommercee.domain.order.OrderDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -26,12 +27,12 @@ public class OrderController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createNewOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public OrderDto createNewOrder(@RequestBody OrderDto orderDto) throws NullPointerException {
+    public OrderDto createNewOrder(@RequestBody OrderDto orderDto) throws UserNotFoundException {
         return orderMapper.orderDtoToMap(orderService.saveOrder(orderMapper.mapToOrder(orderDto)));
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "updateOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public OrderDto updateOrder(@RequestBody OrderDto orderDto) throws NullPointerException {
+    public OrderDto updateOrder(@RequestBody OrderDto orderDto) throws UserNotFoundException {
         return orderMapper.orderDtoToMap(orderService.saveOrder(orderMapper.mapToOrder(orderDto)));
     }
 
