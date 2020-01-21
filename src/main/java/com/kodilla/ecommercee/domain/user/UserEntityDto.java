@@ -19,8 +19,6 @@ public class UserEntityDto {
     private String login;
     private String mail;
     private String password;
-    private Integer sessionKey;
-    private Boolean loggedIn;
 
 
 }
