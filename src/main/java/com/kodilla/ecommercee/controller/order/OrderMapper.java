@@ -27,7 +27,7 @@ public class OrderMapper  {
 
     public OrderEntity mapToOrder(final OrderDto orderDto) throws UserNotFoundException {
 
-        if(orderDao.findById(orderDto.getId()).isPresent()) {
+        if(orderDto.getId() != null && orderDao.findById(orderDto.getId()).isPresent()) {
             OrderEntity orderEntity = orderDao.findById(orderDto.getId()).get();
             orderEntity.setAdress(orderDto.getAddress());
             orderEntity.setPaid(orderDto.getIsPaid());
